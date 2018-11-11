@@ -1,0 +1,96 @@
+<%- include('../header-view') %>
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+  <a class="navbar-brand" href="/">MEMOO</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="nav navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Add MEMOO</a>
+      </li>
+      <% if (user){ %>
+      <li class="nav-item">
+        <a class="nav-link" href="/auth/logout">Logout</a>
+      </li>
+      <% }else { %>
+      <li class="nav-item active">
+        <a class="nav-link" href="/auth/signup">Register</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/auth/login">Login</a>
+      </li>
+      <% } %>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+
+<div class="container mt-4">
+  <div class="card col-12 col-md-6 offset-md-3 p-0">
+    <h4 class="card-header text-center text-white  bg-warning">Register to MEMOO</h4>
+    <div class="card-body">
+      <h5 class="card-title text-center">Register With Social</h5>
+      <div class="text-white text-center">
+        <div class="my-3">
+          <a class="btn btn-lg btn-block btn-social btn-facebook text-center" href="/auth/facebook">
+            <span class="fa fa-facebook"></span> Sign up with Facebook
+          </a>
+        </div>
+        <div class="my-3">
+          <a class="btn btn-lg btn-block btn-social btn-google text-center" href="/auth/google">
+            <span class="fa fa-google-plus"></span> Sign up with Google
+          </a>
+        </div>
+        <span class="hr-line text-muted text-lg">or</span>
+      </div>
+
+      <% if (errors){%>
+      <%for (var error in errors){%>
+      <div class="alert alert-danger" role="alert">
+        <strong>Warning!</strong>
+        <%=errors[error].msg%>
+      </div>
+      <%}%>
+      <% } %>
+
+      <form method="post" action="/auth/signup" class="mt-4">
+        <fieldset class="form-group">
+          <label for="userName">User Name:</label>
+          <input type="text" class="form-control" id="userName" name="userName" placeholder="User Name" pattern="[(A-Z)|(a-z)][(A-Z)|(a-z)| ]*[(A-Z)|(a-z)]" title="username should start and end with character" required>
+          <small class="form-text text-muted">username should start and end with character</small>
+        </fieldset>
+        <fieldset class="form-group">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+          <small class="form-text text-muted">should include '@' in the email address</small>
+        </fieldset>
+        <fieldset class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" name="password" placeholder="Password" pattern=".{8,}" title="password should be 8 or more characters" required>
+          <small class="form-text text-muted">should be 8 or more characters</small>
+        </fieldset>
+
+        <div class="d-md-flex pt-2">
+          <div class="col-12 col-md-5 order-md-last p-2">
+            <button type="submit" class="btn btn-warning btn-lg btn-block text-white">Register</button>
+          </div>
+          <div class="col-12 col-md-7 order-md-first p-2">
+            <p class="mb-0">Already have an account?</p>
+            <a class="text-center" href="/auth/login">Login Now!</a>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+<%- include('../footer-view') %>

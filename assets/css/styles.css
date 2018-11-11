@@ -1,0 +1,18 @@
+.hr-line:before,
+.hr-line:after {
+  background-color: rgba(0,0,0,.1);
+  content: "";
+  display: inline-block;
+  height: 1px;
+  position: relative;
+  vertical-align: middle;
+  width: 50%;
+}
+
+.hr-line:before {
+  margin-left: -50%;
+}
+
+.hr-line:after {
+  margin-right: -50%;
+}

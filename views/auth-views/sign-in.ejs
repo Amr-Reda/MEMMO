@@ -1,0 +1,102 @@
+<%- include('../header-view') %>
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+  <a class="navbar-brand" href="/">MEMOO</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="nav navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Add MEMOO</a>
+      </li>
+      <% if (user){ %>
+      <li class="nav-item">
+        <a class="nav-link" href="/auth/logout">Logout</a>
+      </li>
+      <% }else { %>
+      <li class="nav-item">
+        <a class="nav-link" href="/auth/signup">Register</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/auth/login">Login</a>
+      </li>
+      <% } %>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+
+<div class="container mt-4">
+  <div class="card col-12 col-md-6 offset-md-3 p-0">
+    <h4 class="card-header text-center text-white  bg-warning" href="/auth/google">Login to MEMOO</h4>
+    <div class="card-body">
+      <h5 class="card-title text-center">Login With Social</h5>
+      <div class="text-white text-center">
+        <div class="my-3">
+          <a class="btn btn-lg btn-block btn-social btn-facebook text-center" href="/auth/facebook">
+            <span class="fa fa-facebook"></span> Login with Facebook
+          </a>
+        </div>
+        <div class="my-3">
+          <a class="btn btn-lg btn-block btn-social btn-google text-center" href="/auth/google">
+            <span class="fa fa-google-plus"></span> Login with Google
+          </a>
+        </div>
+        <span class="hr-line text-muted text-lg">or</span>
+      </div>
+
+      <form class="mt-4">
+        <fieldset class="form-group">
+          <label for="userName">User Name:</label>
+          <input type="text" class="form-control" id="userName" placeholder="User Name" required>
+        </fieldset>
+        <fieldset class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" placeholder="Password" required>
+          <a class="float-right" href="#" data-toggle="modal" data-target="#modal-1">Forget password?</a>
+        </fieldset>
+
+        <div class="d-md-flex pt-2">
+          <div class="col-12 col-md-5 order-md-last p-2">
+            <button type="submit" class="btn btn-warning btn-lg btn-block text-white">Login</button>
+          </div>
+          <div class="col-12 col-md-7 order-md-first p-2">
+            <p class="mb-0">You don't have an account?</p>
+            <a class="text-center" href="/auth/signup">Register Now!</a>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+<%# add form here %>
+<div class="modal fade" id="modal-1">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Rest your password</h4>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          <span class="sr-only">Close</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Enter your email address below. We'll look for your account and send you a password reset email.</p>
+        <input type="text" class="form-control" id="email" placeholder="Email">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-block btn-lg btn-success">Rest Password</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<%- include('../footer-view') %>
