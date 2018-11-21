@@ -1,4 +1,4 @@
-# MEMMO (memories app)
+# MEMMeO (memories app)
 
 MEMMO app is an application for saving memories. you can create your own memory or sharing memory with a friend or a group of friends to
 keep it for along time
